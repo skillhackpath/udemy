@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2,#6dd5ed);
+    padding:20px;
+}
+
+.login-container{
+    width:100%;
+    max-width:400px;
+    background:rgba(255,255,255,0.97);
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.logo h1{
+    color:#222;
+    font-size:28px;
+}
+
+.logo p{
+    color:#666;
+    margin-top:8px;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    color:#333;
+    font-weight:600;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:15px;
+    outline:none;
+    transition:0.3s;
+}
+
+.input-group input:focus{
+    border-color:#6366f1;
+    box-shadow:0 0 0 3px rgba(99,102,241,0.15);
+}
+
+.login-btn{
+    width:100%;
+    border:none;
+    border-radius:12px;
+    padding:15px;
+    background:linear-gradient(135deg,#4f46e5,#6366f1);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+
+.login-btn:active{
+    transform:translateY(0);
+}
+
+.error{
+    margin-top:15px;
+    text-align:center;
+    color:#dc2626;
+    min-height:20px;
+    font-size:14px;
+}
+
+@media(max-width:480px){
+    .login-container{
+        padding:25px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="logo">
+        <h1>Login Portal</h1>
+        <p>Enter your credentials to continue</p>
+    </div>
+
+    <div class="input-group">
+        <label for="username">Username</label>
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter username"
+            autocomplete="off">
+    </div>
+
+    <div class="input-group">
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter password">
+    </div>
+
+    <button class="login-btn" onclick="login()">
+        Login
+    </button>
+
+    <div class="error" id="errorMessage"></div>
+
+</div>
+
+<script>
+function login() {
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    if(username === "user" && password === "user") {
+
+        errorMessage.textContent = "";
+
+        
+
+        window.location.href = "Udemy.html";
+
+    } else {
+
+        errorMessage.textContent =
+            "Incorrect credentials. Check your username and password.";
+
+        alert(
+            "Incorrect credentials. Check your username and password."
+        );
+    }
+}
+
+/* Enter key support */
+document.addEventListener("keydown", function(event) {
+    if(event.key === "Enter") {
+        login();
+    }
+});
+
+/* Disable right-click */
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+});
+
+/* Block common inspection shortcuts */
+document.addEventListener("keydown", function(e) {
+
+    if (e.key === "F12") {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.key.toLowerCase() === "u") {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey &&
+        e.key.toLowerCase() === "i") {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey &&
+        e.key.toLowerCase() === "j") {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey &&
+        e.key.toLowerCase() === "c") {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey &&
+        e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        return false;
+    }
+});
+</script>
+
+</body>
+</html>
